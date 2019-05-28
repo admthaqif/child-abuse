@@ -8,7 +8,7 @@ my_data<-data.matrix(my_data)
 dimnames(my_data) = list(
   c("1","2","3","4","5","6","7","8","9","10","11","12","13","14","15","16","17"),
   c("global","america","africa","europe","oceania","asia")
-  ) # column names
+) # column names
 
 # Define UI for application that draws a histogram
 ui <- fluidPage(
@@ -30,7 +30,8 @@ ui <- fluidPage(
     
     # Create a spot for the barplot
     mainPanel(
-      plotOutput("phonePlot")
+      plotOutput("phonePlot"),
+      plotOutput("phonePlot2")
     )
   )
 )
@@ -39,11 +40,12 @@ ui <- fluidPage(
 server <- function(input, output) {
   
   # Fill in the spot we created for a plot
-  output$phonePlot <- renderPlot({
+  output$phonePlot<- renderPlot({
     
     # Render a barplot
     barplot(my_data[,input$region], 
             main=input$region,
+            col=rainbow(17),
             ylab="number of child being abuse (million)",
             xlab="age")
   })
@@ -51,3 +53,4 @@ server <- function(input, output) {
 
 # Run the application 
 shinyApp(ui = ui, server = server)
+
