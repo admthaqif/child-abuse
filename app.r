@@ -1,5 +1,6 @@
 library(shiny)
 library(shinyWidgets)
+library(ggplot2)
 
 my_data <- read.csv(file = "https://raw.githubusercontent.com/admthaqif/child-abuse/master/table_of_child_abuse.csv",
                     stringsAsFactors = TRUE, header = TRUE)
@@ -33,8 +34,7 @@ ui <- fluidPage(
     
     # Create a spot for the barplot
     mainPanel(
-      plotOutput("phonePlot"),
-      plotOutput("phonePlot2")
+      plotOutput("phonePlot")
     )
   )
 )
