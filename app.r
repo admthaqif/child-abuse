@@ -1,4 +1,5 @@
 library(shiny)
+library(shinyWidgets)
 
 my_data <- read.csv(file = "https://raw.githubusercontent.com/admthaqif/child-abuse/master/table_of_child_abuse.csv",
                     stringsAsFactors = TRUE, header = TRUE)
@@ -14,8 +15,10 @@ dimnames(my_data) = list(
 ui <- fluidPage(
   
   # Give the page a title
-  titlePanel("Child Abuse from 2013 until 2017"),
+  h1(id="big-heading", "Child Abuse from 2013 until 2017",br()),
+  tags$style(HTML("#big-heading{color: #961212; font-size: 50px;font-style:italic ; font-size:600%;}")),
   
+  setBackgroundImage("https://www.deseretnews.com/images/article/hires/998056/998056.jpg"),
   # Generate a row with a sidebar
   sidebarLayout(
     
